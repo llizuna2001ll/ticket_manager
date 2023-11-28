@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from "./pagesClient/Login";
+import {BrowserRouter, BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Error from "./pagesClient/Error";
+import MyAp from "./pagesClient/MyAp";
+import React from "react";
+import MyTickets from "./pagesClient/MyTickets";
+import HomeAdmin from "./pagesAdmin/HomeAdmin";
+import Clients from "./pagesAdmin/Clients";
+import AllTickets from "./pagesAdmin/AllTickets";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Login/>}/>
+                        <Route path="/myap" element={<MyAp/>}/>
+                        <Route path="/profile" element={<MyAp/>}/>
+                        <Route path="/dashboard" element={<HomeAdmin/>}/>
+                        <Route path="/clients" element={<Clients/>}/>
+                        <Route path="/allTickets" element={<AllTickets/>}/>
+                        <Route path="/myTickets" element={<MyTickets/>}/>
+                        <Route path="/*" element={<Error/>}/>
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 }
+
 
 export default App;
